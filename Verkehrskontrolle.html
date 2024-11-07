@@ -10,6 +10,17 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
+        #tabelle{
+            background-color: white;
+            border: 2px solid black;
+        }
+        td,tr{
+            text-align: center;
+            color: black;
+            font-weight: bold;
+        }
+
+        
     </style>
 
     <script>
@@ -26,6 +37,12 @@
         let kontrollen = [];
         let gameRunning = true;
         let whowongame = ''
+        let car = 'img/passat.png'
+
+        let s3Counter = 0;
+        let s4Counter = 0;
+        let joelCounter = 0;
+
         
         let polizei = {
             x : 50,
@@ -97,6 +114,17 @@
                         kontrolle.y < audis4.y + audis4.height) {
                         audis4.hit = true;
                         audis4.img.src = 'img/stillgelegt.png';
+
+                        if (audis4.src === 'img/audis4.png') {
+                            s4Counter++;
+                           document.getElementById('s4').innerText = s4Counter;
+                        } else if (audis4.src === 'img/passat.png') {
+                            joelCounter++;
+                            document.getElementById('joel').innerText = joelCounter;
+                     } else if (audis4.src === 'img/s3.png') {
+                             s3Counter++;
+                             document.getElementById('s3').innerText = s3Counter;
+                     }
                         
                         setTimeout(() => {
                             audis4s = audis4s.filter(u => u != audis4);
@@ -129,15 +157,28 @@
 
         function createS4(){
             var randompos = Math.floor(Math.random() * 400) + 10; 
+            var passatoraudi = Math.floor(Math.random() * 3) + 1; 
+            if(passatoraudi == 1){
+                car = 'img/audis4.png'
+            }
+            else if(passatoraudi == 2){
+                car = 'img/passat.png'
+            }
+
+            else{
+                car = 'img/s3.png'
+            }
+
+
             let audis4 = {
                 x: 730,
                 y: randompos, 
-                width: 160,
+                width: 185,
                 height: 100,
-                src: 'img/audis4.png',
+                src: car,
                 img: new Image()
             };
-            audis4.img.src = 'img/audis4.png'
+            audis4.img.src = car
             audis4s.push(audis4);
 
         }
@@ -221,6 +262,35 @@
 <body onload = "startGame()">
 
     <canvas width="720" height="480" id="canvas"></canvas>
+    
+    <table id="tabelle" width="200px">
+        <tr>
+            <td>Hässigi S3 Fahrer</td>
+        </tr>
+        <tr>
+            <td id="s3">0</td>
+        </tr>
+    </table>
+    
+    <table id="tabelle" width="200px">
+        <tr>
+            <td>Hässigi S4 Fahrer</td>
+        </tr>
+        <tr>
+            <td id="s4">0</td>
+        </tr>
+    </table>
+    
+    <table id="tabelle" width="200px">
+        <tr>
+            <td>Hässigi Joel</td>
+        </tr>
+        <tr>
+            <td id="joel">0</td>
+        </tr>
+    </table>
+    
+     
     
 </body>
 </html>
