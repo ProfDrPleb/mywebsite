@@ -37,7 +37,7 @@
         let kontrollen = [];
         let gameRunning = true;
         let whowongame = ''
-        let car = 'img/passat.png'
+        let car = 'passat.png'
 
         let s3Counter = 0;
         let s4Counter = 0;
@@ -49,7 +49,7 @@
             y : 200,
             width : 200,
             height : 120,
-            src : 'img/polizei.png'
+            src : 'polizei.png'
         }
 
         document.onkeydown = function(e){
@@ -96,7 +96,7 @@
         }
 
         function stopGame() {
-            polizei.img.src = 'img/totalschade.png';
+            polizei.img.src = 'totalschade.png';
             gameRunning = false;
             clearInterval(update);
             clearInterval(createS4);
@@ -113,15 +113,15 @@
                         kontrolle.x < audis4.x + audis4.width &&
                         kontrolle.y < audis4.y + audis4.height) {
                         audis4.hit = true;
-                        audis4.img.src = 'img/stillgelegt.png';
+                        audis4.img.src = 'stillgelegt.png';
 
-                        if (audis4.src === 'img/audis4.png') {
+                        if (audis4.src === 'audis4.png') {
                             s4Counter++;
                            document.getElementById('s4').innerText = s4Counter;
-                        } else if (audis4.src === 'img/passat.png') {
+                        } else if (audis4.src === 'passat.png') {
                             joelCounter++;
                             document.getElementById('joel').innerText = joelCounter;
-                     } else if (audis4.src === 'img/s3.png') {
+                     } else if (audis4.src === 's3.png') {
                              s3Counter++;
                              document.getElementById('s3').innerText = s3Counter;
                      }
@@ -141,7 +141,7 @@
                     polizei.x + polizei.width > audis4.x &&
                     polizei.y < audis4.y + audis4.height &&
                     polizei.y + polizei.height > audis4.y) {
-                    polizei.img.src = 'img/totalschade.png';
+                    polizei.img.src = 'totalschade.png';
                     setTimeout(() => {
                         whowongame = 'Audi Pilot hät gunne. Seite Neu laden'
                         
@@ -159,14 +159,14 @@
             var randompos = Math.floor(Math.random() * 400) + 10; 
             var passatoraudi = Math.floor(Math.random() * 3) + 1; 
             if(passatoraudi == 1){
-                car = 'img/audis4.png'
+                car = 'audis4.png'
             }
             else if(passatoraudi == 2){
-                car = 'img/passat.png'
+                car = 'passat.png'
             }
 
             else{
-                car = 'img/s3.png'
+                car = 's3.png'
             }
 
 
@@ -190,7 +190,7 @@
                     y: polizei.y + 22,
                     width: 50,
                     height: 50,
-                    src: 'img/grosskontrolle.png',
+                    src: 'grosskontrolle.png',
                     img: new Image()
                 };
                 kontrolle.img.src = kontrolle.src;
@@ -227,7 +227,7 @@
         }
 
         function loadImages(){
-            backgroundImage.src = 'img/strasse.png';
+            backgroundImage.src = 'strasse.png';
             
             polizei.img = new Image();
             polizei.img.src = polizei.src;
